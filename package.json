@@ -1,16 +1,21 @@
 {
-  "name": "awesome_chat",
-  "version": "1.0.0",
-  "description": "awesome_chat",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "tranvanmydev@gmail.com",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "multer": "^1.4.2"
-  }
+    "name": "awesome_chat",
+    "version": "1.0.0",
+    "description": "awesome_chat",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "babel-node server.js"
+    },
+    "author": "tranvanmydev@gmail.com",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "multer": "^1.4.2"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.7.0"
+    }
 }
