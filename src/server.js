@@ -33,7 +33,8 @@ app.post("/users", urlencodedParser, (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/" + "index.html");
+    res.send("nhu l");
+    // res.sendFile(__dirname + ".." + "/" + "index.html");
 });
 
 app.listen(port, hostname, () => {
