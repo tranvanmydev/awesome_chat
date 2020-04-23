@@ -1,42 +1,32 @@
 // var express = require('express');
 import express from 'express';
+import ConnectDB from "./config/connectDB";
+import ContactModel from "./models/contact.model";
 
 let app = express();
+// connect to database mongo
+ConnectDB();
+
 let bodyParser = require('body-parser');
-let hostname = 'localhost';
-let port = 8017;
 
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static('public'));
 
-app.get("/users", (req, res) => {
-    response = {
-        first_name: req.query.first_name,
-        last_name: req.query.last_name
+app.get("/test-database", async(req, res) => {
+    try {
+        let item = {
+            userId: "00000",
+            contactId: "0000"
+        }
+
+        let contact = await ContactModel.createNew(item);
+        res.send(contact);
+    } catch (err) {
+        console.log(err);
     }
-    console.log(response);
-    res.send(JSON.stringify(response));
 });
 
-app.delete("/users", (req, res) => {
-    res.send(JSON.stringify(response));
-});
-
-app.post("/users", urlencodedParser, (req, res) => {
-    response = {
-        first_name: req.query.first_name,
-        last_name: req.query.last_name
-    }
-    console.log(response);
-    res.send(JSON.stringify(response));
-});
-
-app.get("/", (req, res) => {
-    res.send("nhu l");
-    // res.sendFile(__dirname + ".." + "/" + "index.html");
-});
-
-app.listen(port, hostname, () => {
-    console.log(hostname, port);
+app.listen(process.env.APP_PORT, process.env.APP_HOST, () => {
+    console.log(process.env.APP_HOST, process.env.APP_PORT);
 });
